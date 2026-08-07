@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Resume Analysis{% endblock %}
+
+{% block content %}
+
+<section class="analysis-page">
+
+    <div class="analysis-header">
+
+        <h1>Resume Analysis</h1>
+
+        <p>
+            Upload your resume and compare it with any job description to receive
+            an AI-powered compatibility analysis.
+        </p>
+
+    </div>
+
+    <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+        <!-- Resume Upload -->
+
+        <div class="upload-card">
+
+            <h3>Upload Resume</h3>
+
+            <p>Supported format: PDF</p>
+
+            <label class="upload-box">
+
+    <input
+        type="file"
+        id="resume"
+        name="resume"
+        accept=".pdf"
+        required
+        hidden
+    >
+
+    <div id="upload-content">
+
+        <h4>Drag & Drop Your Resume</h4>
+
+        <p>or click here to browse</p>
+
+        <small>Supported format: PDF</small>
+
+    </div>
+
+</label>
+
+<p id="file-name"></p>
+        </div>
+
+        <!-- Job Description -->
+
+        <div class="jd-card">
+
+            <h3>Job Description</h3>
+
+            <textarea
+                name="job_description"
+                rows="14"
+                placeholder="Paste the complete job description here..."
+                required
+            ></textarea>
+
+        </div>
+
+        <button class="analyze-btn" type="submit">
+
+            Start Analysis
+
+        </button>
+
+    </form>
+<div id="results-container" style="display:none; margin-top:60px;"></div>
+</section>
+
+{% endblock %}

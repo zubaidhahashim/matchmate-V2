@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}MatchMate{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+
+    <div class="container-xl">
+
+        <a class="navbar-brand" href="/">
+            MatchMate
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/analysis">Resume Analysis</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/optimizer">Resume Optimizer</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/interview">Interview Coach</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/roadmap">Roadmap</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/reports">Reports</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+<!-- Premium Loading Screen -->
+
+<div id="loading-screen">
+
+    <div class="loader-card">
+
+        <div class="spinner"></div>
+
+        <h2>Analyzing Your Resume</h2>
+
+        <p class="loader-subtitle">
+
+            Our AI is reviewing your resume against the job description.
+
+        </p>
+
+        <div id="loading-steps">
+
+            <div class="loading-step" id="step1">
+
+                <span>⏳</span>
+
+                <p>Uploading Resume...</p>
+
+            </div>
+
+            <div class="loading-step" id="step2">
+
+                <span>⏳</span>
+
+                <p>Reading Resume...</p>
+
+            </div>
+
+            <div class="loading-step" id="step3">
+
+                <span>⏳</span>
+
+                <p>Identifying Skills...</p>
+
+            </div>
+
+            <div class="loading-step" id="step4">
+
+                <span>⏳</span>
+
+                <p>Comparing with Job Description...</p>
+
+            </div>
+
+            <div class="loading-step" id="step5">
+
+                <span>⏳</span>
+
+                <p>Calculating Match Score...</p>
+
+            </div>
+
+            <div class="loading-step" id="step6">
+
+                <span>⏳</span>
+
+                <p>Preparing Recommendations...</p>
+
+            </div>
+
+        </div>
+
+        <small>
+            This usually takes 3–5 seconds.
+        </small>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Upload -->
+
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+
+<!-- Analysis -->
+
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="badge">
+            AI Career Preparation Platform
+        </span>
+
+        <h1>
+            Analyze. Improve. Prepare.
+        </h1>
+
+        <p>
+            MatchMate helps you analyze resumes, identify skill gaps,
+            optimize your resume, prepare for interviews, and build a
+            personalized learning roadmap.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/analysis" class="primary-btn">
+                Start Analysis
+
+            </a>
+
+           <a href="#features" class="secondary-btn">
+    Explore Features
+</a>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="features" class="features">
+
+    <div class="section-title">
+
+        <h2>Everything You Need</h2>
+
+        <p>
+            Prepare for every stage of your job search with MatchMate.
+        </p>
+
+    </div>
+
+    <div class="feature-grid">
+
+        <a href="/analysis" class="feature-card">
+
+            <h3>Resume Analysis</h3>
+
+            <p>
+                Compare your resume with any job description and identify skill gaps.
+            </p>
+            <span class="card-link">
+                 Learn More →
+            </span>
+        </a>
+
+        <a href="/optimizer" class="feature-card">
+
+            <h3>Resume Optimizer</h3>
+
+            <p>
+                Improve your resume with intelligent suggestions and better wording.
+            </p>
+<span class="card-link">
+    Learn More →
+</span>
+        </a>
+
+        <a href="/interview" class="feature-card">
+
+            <h3>Interview Coach</h3>
+
+            <p>
+                Practice HR and technical interview questions tailored to your resume.
+            </p>
+<span class="card-link">
+    Learn More →
+</span>
+        </a>
+
+        <a href="/roadmap" class="feature-card">
+
+            <h3>Learning Roadmap</h3>
+
+            <p>
+                Receive a personalized learning plan based on your missing skills.
+            </p>
+<span class="card-link">
+    Learn More →
+</span>
+        </a>
+
+    </div>
+
+</section>
+{% endblock %}

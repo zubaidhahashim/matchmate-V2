@@ -1,0 +1,17 @@
+We are looking for a Data Analyst with experience in Python, SQL, Power BI, Excel and Tableau.
+
+Responsibilities:
+- Analyze business data
+- Build dashboards
+- Write SQL queries
+- Create reports
+- Communicate insights with stakeholders
+
+Preferred Skills:
+Python
+SQL
+Power BI
+Excel
+Tableau
+Communication
+Problem Solving
