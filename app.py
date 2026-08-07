@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-
 import os
 
 from modules.pdf_reader import read_pdf
@@ -9,12 +8,18 @@ from modules.report_generator import generate_report
 from modules.recommendations import get_recommendations
 
 app = Flask(__name__)
+
 UPLOAD_FOLDER = "uploads"
 ALLOWED_EXTENSIONS = {"pdf"}
 
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+
+# =======================
+# Pages
+# =======================
 
 @app.route("/")
 def home():
@@ -49,6 +54,11 @@ def reports():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+# =======================
+# Resume Analysis
+# =======================
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
@@ -86,14 +96,20 @@ def analyze():
 
     return jsonify({
 
-    "score": round(score, 2),
+        "score": round(score, 2),
 
-    "matching_skills": matching_skills,
+        "matching_skills": matching_skills,
 
-    "missing_skills": missing_skills,
+        "missing_skills": missing_skills,
 
-    "recommendations": recommendations
+        "recommendations": recommendations
 
-})
+    })
+
+
+# =======================
+# Run App
+# =======================
+
 if __name__ == "__main__":
     app.run(debug=True)

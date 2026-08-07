@@ -1,4 +1,4 @@
-const analysisForm = document.querySelector("form");
+const analysisForm = document.querySelector("#analysis-form");
 const loadingScreen = document.getElementById("loading-screen");
 
 analysisForm.addEventListener("submit", async function (event) {
@@ -7,34 +7,10 @@ analysisForm.addEventListener("submit", async function (event) {
 
     loadingScreen.style.display = "flex";
 
-    const formData = new FormData(analysisForm);
-
-    const steps = [
-        "Uploading Resume...",
-        "Reading Resume...",
-        "Identifying Skills...",
-        "Comparing with Job Description...",
-        "Calculating Match Score...",
-        "Preparing Recommendations..."
-    ];
-
     const loadingText = document.getElementById("loading-text");
+    loadingText.textContent = "Analyzing your resume...";
 
-    let step = 0;
-
-    loadingText.textContent = steps[0];
-
-    const interval = setInterval(() => {
-
-        step++;
-
-        if (step < steps.length) {
-
-            loadingText.textContent = steps[step];
-
-        }
-
-    }, 650);
+    const formData = new FormData(analysisForm);
 
     const startTime = Date.now();
 
@@ -49,23 +25,11 @@ analysisForm.addEventListener("submit", async function (event) {
 
         const elapsed = Date.now() - startTime;
 
-        const minimumTime = 4000;
-
-        if (elapsed < minimumTime) {
-
+        if (elapsed < 3000) {
             await new Promise(resolve =>
-                setTimeout(resolve, minimumTime - elapsed)
+                setTimeout(resolve, 3000 - elapsed)
             );
-
         }
-
-        clearInterval(interval);
-
-        loadingText.textContent = "Opening Results...";
-
-        await new Promise(resolve =>
-            setTimeout(resolve, 700)
-        );
 
         loadingScreen.style.display = "none";
 
@@ -73,21 +37,24 @@ analysisForm.addEventListener("submit", async function (event) {
 
         results.style.display = "block";
 
-        const score = Math.round(data.score);
+        results.scrollIntoView({
+            behavior: "smooth"
+        });
 
-        const progress = score * 3.6;
+        const score = Number(data.score).toFixed(2);
+        const progress = parseFloat(score) * 3.6;
 
         results.innerHTML = `
-
         <div class="results-card">
 
-            <h2 style="text-align:center;margin-bottom:40px;">
-                Resume Analysis Complete
+            <h2 class="results-title">
+                Resume Analysis Report
             </h2>
 
             <div class="score-wrapper">
 
-                <div class="score-circle" style="--progress:${progress}deg;">
+                <div class="score-circle"
+                     style="--progress:${progress}deg;">
 
                     <div class="score-inner">
 
@@ -151,30 +118,27 @@ analysisForm.addEventListener("submit", async function (event) {
 
             <div class="dashboard-buttons">
 
-                <a href="/optimizer" class="primary-btn">
+    <a href="/optimizer" class="primary-btn">
+        Optimize Resume
+    </a>
 
-                    Optimize Resume
+    <button
+        type="button"
+        class="secondary-btn"
+        onclick="window.location.reload()">
 
-                </a>
+        Analyze Another Resume
 
-                <button class="secondary-btn"
-                        onclick="window.location.reload()">
+    </button>
 
-                    Analyze Another Resume
-
-                </button>
-
-            </div>
+</div>
 
         </div>
-
         `;
 
     }
 
     catch (error) {
-
-        clearInterval(interval);
 
         console.error(error);
 

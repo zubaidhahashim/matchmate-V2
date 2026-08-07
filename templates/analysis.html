@@ -11,13 +11,16 @@
         <h1>Resume Analysis</h1>
 
         <p>
-            Upload your resume and compare it with any job description to receive
-            an AI-powered compatibility analysis.
+            Upload your resume and compare it with any job description
+            to receive an AI-powered compatibility analysis.
         </p>
 
     </div>
 
-    <form action="/analyze" method="POST" enctype="multipart/form-data">
+    <form id="analysis-form"
+          action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
 
         <!-- Resume Upload -->
 
@@ -29,28 +32,29 @@
 
             <label class="upload-box">
 
-    <input
-        type="file"
-        id="resume"
-        name="resume"
-        accept=".pdf"
-        required
-        hidden
-    >
+                <input
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    accept=".pdf"
+                    required
+                    hidden
+                >
 
-    <div id="upload-content">
+                <div id="upload-content">
 
-        <h4>Drag & Drop Your Resume</h4>
+                    <h4>📄 Drag & Drop Your Resume</h4>
 
-        <p>or click here to browse</p>
+                    <p>or click here to browse</p>
 
-        <small>Supported format: PDF</small>
+                    <small>Supported format: PDF</small>
 
-    </div>
+                    <div id="file-name"></div>
 
-</label>
+                </div>
 
-<p id="file-name"></p>
+            </label>
+
         </div>
 
         <!-- Job Description -->
@@ -61,7 +65,7 @@
 
             <textarea
                 name="job_description"
-                rows="14"
+                rows="12"
                 placeholder="Paste the complete job description here..."
                 required
             ></textarea>
@@ -75,7 +79,21 @@
         </button>
 
     </form>
-<div id="results-container" style="display:none; margin-top:60px;"></div>
+
+    <!-- Dynamic Results -->
+
+    <div id="results-container"
+         style="display:none; margin-top:60px;">
+
+    </div>
+
 </section>
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
 
 {% endblock %}
