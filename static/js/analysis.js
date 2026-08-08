@@ -72,7 +72,7 @@ analysisForm.addEventListener("submit", async function (event) {
 
             <div class="dashboard-section">
 
-                <h3>✅ Matching Skills</h3>
+                <h3> Matching Skills</h3>
 
                 <div class="badge-container">
 
@@ -88,7 +88,7 @@ analysisForm.addEventListener("submit", async function (event) {
 
             <div class="dashboard-section">
 
-                <h3>❌ Missing Skills</h3>
+                <h3> Missing Skills</h3>
 
                 <div class="badge-container">
 
@@ -104,7 +104,7 @@ analysisForm.addEventListener("submit", async function (event) {
 
             <div class="dashboard-section">
 
-                <h3>💡 Recommendations</h3>
+                <h3> Recommendations</h3>
 
                 <ul class="recommendation-list">
 

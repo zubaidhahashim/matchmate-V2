@@ -1,25 +1,59 @@
+import re
+
+
 # Dictionary of supported skills
+
 SKILLS = {
+
+    # Programming
     "python": "Python",
-    "sql": "SQL",
-    "power bi": "Power BI",
-    "excel": "Excel",
-    "tableau": "Tableau",
-    "communication": "Communication",
-    "problem solving": "Problem Solving",
-    "git": "Git",
+    "java": "Java",
     "javascript": "JavaScript",
-    "react": "React",
+    "c++": "C++",
+    "c#": "C#",
+
+    # Web
     "html": "HTML",
     "css": "CSS",
+    "react": "React",
+    "node.js": "Node.js",
+    "flask": "Flask",
+
+    # Data / Analytics
+    "sql": "SQL",
+    "excel": "Excel",
+    "power bi": "Power BI",
+    "tableau": "Tableau",
+    "data analysis": "Data Analysis",
+    "data visualization": "Data Visualization",
+    "business intelligence": "Business Intelligence",
+    "statistics": "Statistics",
+    "machine learning": "Machine Learning",
+
+    # Databases
     "mongodb": "MongoDB",
-    "figma": "Figma"
+    "mysql": "MySQL",
+    "postgresql": "PostgreSQL",
+
+    # Tools
+    "git": "Git",
+    "github": "GitHub",
+    "figma": "Figma",
+
+    # Professional skills
+    "communication": "Communication",
+    "problem solving": "Problem Solving",
+    "problem-solving": "Problem Solving",
+    "leadership": "Leadership",
+    "teamwork": "Teamwork",
+    "time management": "Time Management",
+
 }
 
 
 def extract_skills(text):
     """
-    Extracts known skills from the given text.
+    Extract known skills from the given text.
 
     Args:
         text (str): Resume or job description text.
@@ -28,14 +62,19 @@ def extract_skills(text):
         list: List of detected skills.
     """
 
-    # Convert text to lowercase for case-insensitive matching
     text = text.lower()
 
     found_skills = []
 
-    # Check each skill in the text
-    for skill in SKILLS:
-        if skill in text:
-            found_skills.append(SKILLS[skill])
+    for skill, display_name in SKILLS.items():
+
+        # Escape special characters such as + and .
+        pattern = r"(?<!\w)" + re.escape(skill) + r"(?!\w)"
+
+        if re.search(pattern, text):
+
+            if display_name not in found_skills:
+
+                found_skills.append(display_name)
 
     return found_skills

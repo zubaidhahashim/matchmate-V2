@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}Interview Coach{% endblock %}
+
+{% block content %}
+
+<div class="analysis-page">
+
+    <div class="analysis-header">
+
+        <h1>Interview Coach</h1>
+
+        <p>
+            Practice personalized interview questions based on your
+            resume and target job.
+        </p>
+
+    </div>
+
+
+    <form id="interview-form"
+          enctype="multipart/form-data">
+
+
+        <!-- ================= RESUME ================= -->
+
+        <div class="upload-card">
+
+            <h3>Upload Your Resume</h3>
+
+            <p>
+                We'll use your resume to create questions about
+                your projects, skills, and experience.
+            </p>
+
+            <label class="upload-box">
+
+                <input
+                    type="file"
+                    id="interview-resume"
+                    name="resume"
+                    accept=".pdf"
+                    hidden
+                    required
+                >
+
+                <div id="interview-upload-content">
+
+                    <h4>📄 Drag & Drop Your Resume</h4>
+
+                    <p>or click here to browse</p>
+
+                    <small>Supported format: PDF</small>
+
+                    <div id="interview-file-name"></div>
+
+                </div>
+
+            </label>
+
+        </div>
+
+
+        <!-- ================= JOB DESCRIPTION ================= -->
+
+        <div class="jd-card">
+
+            <h3>Job Description</h3>
+
+            <p>
+                Paste the job description you're preparing for.
+            </p>
+
+            <textarea
+                id="job-description"
+                name="job_description"
+                rows="12"
+                placeholder="Paste the complete job description here..."
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- ================= JOB ROLE ================= -->
+
+        <div class="jd-card">
+
+            <h3>Target Job Role</h3>
+
+            <p>
+                What position are you interviewing for?
+            </p>
+
+            <input
+                type="text"
+                id="job-role"
+                name="job_role"
+                placeholder="e.g. Data Analyst"
+                required
+            >
+
+        </div>
+
+
+        <!-- ================= EXPERIENCE ================= -->
+
+        <div class="jd-card">
+
+            <h3>Experience Level</h3>
+
+            <select
+                id="experience-level"
+                name="experience_level"
+                required>
+
+                <option value="" disabled selected>
+                    Select your experience level
+                </option>
+
+                <option value="fresher">
+                    Fresher
+                </option>
+
+                <option value="1-2 years">
+                    1–2 Years
+                </option>
+
+                <option value="3-5 years">
+                    3–5 Years
+                </option>
+
+                <option value="5+ years">
+                    5+ Years
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ================= INTERVIEW TYPE ================= -->
+
+        <div class="jd-card">
+
+            <h3>Interview Type</h3>
+
+            <select
+                id="interview-type"
+                name="interview_type"
+                required>
+
+                <option value="" disabled selected>
+                    Select interview type
+                </option>
+
+                <option value="technical">
+                    Technical
+                </option>
+
+                <option value="hr">
+                    HR / Behavioral
+                </option>
+
+                <option value="mixed">
+                    Mixed
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ================= QUESTION COUNT ================= -->
+
+        <div class="jd-card">
+
+            <h3>Number of Questions</h3>
+
+            <select
+                id="question-count"
+                name="question_count"
+                required>
+
+                <option value="5">
+                    5 Questions
+                </option>
+
+                <option value="10" selected>
+                    10 Questions
+                </option>
+
+                <option value="15">
+                    15 Questions
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ================= START ================= -->
+
+        <button
+            class="analyze-btn"
+            type="submit">
+
+            Start Personalized Interview
+
+        </button>
+
+    </form>
+
+
+    <!-- ================= RESULTS ================= -->
+
+    <div
+        id="interview-results"
+        style="display:none; margin-top:60px;">
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+
+<div class="reports-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="reports-header">
+
+        <h1>Resume Analysis Report</h1>
+
+        <p>
+            Review your latest MatchMate resume analysis
+            and identify areas for improvement.
+        </p>
+
+    </div>
+
+
+    {% if report %}
+
+    <!-- ================= SCORE ================= -->
+
+    <div class="report-score-card">
+
+        <div class="report-score-circle">
+
+            <div>
+
+                <h1>{{ report.score|round|int }}%</h1>
+
+                <p>Match Score</p>
+
+            </div>
+
+        </div>
+
+        <div class="score-description">
+
+            <h2>Your Resume Match</h2>
+
+            <p>
+                This score represents how closely your resume
+                matches the job description you analyzed.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SKILLS ================= -->
+
+    <div class="report-grid">
+
+
+        <!-- Matching Skills -->
+
+        <div class="report-card">
+
+            <h3> Matching Skills</h3>
+
+            {% if report.matching_skills %}
+
+            <div class="report-badges">
+
+                {% for skill in report.matching_skills %}
+
+                <span class="report-badge success">
+                    {{ skill }}
+                </span>
+
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+
+            <p class="empty-text">
+                No matching skills found.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Missing Skills -->
+
+        <div class="report-card">
+
+            <h3> Missing Skills</h3>
+
+            {% if report.missing_skills %}
+
+            <div class="report-badges">
+
+                {% for skill in report.missing_skills %}
+
+                <span class="report-badge danger">
+                    {{ skill }}
+                </span>
+
+                {% endfor %}
+
+            </div>
+
+            {% else %}
+
+            <p class="empty-text">
+                No major missing skills identified.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RECOMMENDATIONS ================= -->
+
+    <div class="report-card recommendations-card">
+
+        <h3> Recommendations</h3>
+
+        {% if report.recommendations %}
+
+        <ul class="report-recommendations">
+
+            {% for recommendation in report.recommendations %}
+
+            <li>
+                {{ recommendation }}
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p class="empty-text">
+            No recommendations available.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================= ACTIONS ================= -->
+
+    <div class="report-actions">
+
+        <a
+            href="/analysis"
+            class="primary-btn">
+
+            Analyze Another Resume
+
+        </a>
+
+        <a
+            href="/optimizer"
+            class="secondary-btn">
+
+            Optimize Resume
+
+        </a>
+
+    </div>
+
+
+    {% else %}
+
+    <!-- ================= NO REPORT ================= -->
+
+    <div class="no-report-card">
+
+        <div class="no-report-icon">
+            
+        </div>
+
+        <h2>No Report Available Yet</h2>
+
+        <p>
+            Complete a Resume Analysis first.
+            Your latest analysis report will appear here.
+        </p>
+
+        <a
+            href="/analysis"
+            class="primary-btn">
+
+            Start Resume Analysis
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Resume Optimizer{% endblock %}
+
+{% block content %}
+
+<div class="analysis-page">
+
+    <div class="analysis-header">
+
+        <h1>Resume Optimizer</h1>
+
+        <p>
+            Improve your resume with AI-powered suggestions and ATS optimization.
+        </p>
+
+    </div>
+
+    <form id="optimizer-form"
+          enctype="multipart/form-data">
+
+        <!-- Resume Upload -->
+
+        <div class="upload-card">
+
+            <h3>Upload Resume</h3>
+
+            <p>Supported format: PDF</p>
+
+            <label class="upload-box">
+
+                <input
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    accept=".pdf"
+                    hidden
+                    required
+                >
+
+                <div id="upload-content">
+
+                    <h4>📄 Drag & Drop Your Resume</h4>
+
+                    <p>or click here to browse</p>
+
+                    <small>Supported format: PDF</small>
+
+                    <div id="file-name"></div>
+
+                </div>
+
+            </label>
+
+        </div>
+
+        <!-- Job Description -->
+
+        <div class="jd-card">
+
+            <h3>Job Description</h3>
+
+            <textarea
+                name="job_description"
+                rows="12"
+                placeholder="Paste the job description here..."
+                required
+            ></textarea>
+
+        </div>
+
+        <button
+            class="analyze-btn"
+            type="submit">
+
+            Optimize Resume
+
+        </button>
+
+    </form>
+
+    <!-- Results -->
+
+    <div
+        id="optimizer-results"
+        style="display:none; margin-top:60px;">
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/optimizer.js') }}"></script>
+
+{% endblock %}
