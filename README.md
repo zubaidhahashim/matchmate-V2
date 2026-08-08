@@ -147,3 +147,65 @@ MatchMate-V2/
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
+Installation
+1. Clone the repository
+git clone https://github.com/zubaidhahashim/matchmate-V2.git
+2. Move into the project directory
+cd matchmate-V2
+3. Create a virtual environment
+python -m venv .venv
+4. Activate the virtual environment
+Windows
+.venv\Scripts\activate
+macOS / Linux
+source .venv/bin/activate
+5. Install dependencies
+pip install -r requirements.txt
+6. Run the application
+python app.py
+
+The application will be available at:
+
+http://127.0.0.1:5000
+Usage
+
+After starting the application, users can access:
+
+Home — overview of MatchMate
+Resume Analysis — analyze resume-job compatibility
+Resume Optimizer — improve resume content
+Interview Coach — generate personalized interview questions
+Reports — view the latest analysis report
+About — information about the project
+Current Version
+MatchMate V2
+
+The current version uses a Flask-based web interface and focuses on three core career preparation features:
+
+Resume Analysis
+Resume Optimization
+Interview Preparation
+
+The project keeps the workflow simple and focuses on practical tools for job seekers.
+
+Future Improvements
+
+Potential future enhancements include:
+
+More comprehensive skill extraction
+Additional resume analysis metrics
+Improved job-specific recommendations
+More interview question categories
+Resume report export
+Job application tracking
+Support for additional document formats
+Author
+
+Zubaidha Hashim
+
+BCA Graduate | Aspiring Data Analyst
+
+License
+
+This project is licensed under the MIT License.
