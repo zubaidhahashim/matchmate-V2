@@ -210,7 +210,7 @@ The goal is to provide simple and practical tools that help job seekers prepare 
 
 **Zubaidha Hashim**
 
-BCA Graduate | Aspiring Data Analyst
+BCA Graduate 
 
 ---
 
