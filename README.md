@@ -42,7 +42,7 @@ The application analyzes resumes against job descriptions, identifies matching a
 - Choose the number of questions
 - Questions include categories and difficulty levels
 
-### 📑 Reports
+### Reports
 
 - View the latest resume analysis
 - Review match score
